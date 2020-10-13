@@ -11,8 +11,12 @@ def get_all_entries():
 
 		db_cursor.execute("""
 		SELECT 
-			* 
-		FROM Entries
+			e.id,
+  			e.date,
+  			e.concept,
+  			e.entry,
+			e.mood_id
+		FROM Entries e
 		""")
 
 		entries = []

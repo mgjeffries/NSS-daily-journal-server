@@ -36,10 +36,6 @@ INSERT INTO 'Moods' VALUES (null, 'adventurous');
 INSERT INTO 'Entries' VALUES (null, '07/06/2020', 'Start Day', 'John Talked to the class most of the day', 1);
 INSERT INTO 'Entries' VALUES (null, '07/08/2020', 'HTML & CSS', 'Jumped in to creating pages with css and flexbox. Feeling overwhelmed', 1);
 
-
-SELECT * FROM 'Moods';
-SELECT * FROM 'Entries';
-
 INSERT INTO 'Tags' VALUES (null, 'API');
 INSERT INTO 'Tags' VALUES (null, 'components');
 INSERT INTO 'Tags' VALUES (null, 'fetch');
@@ -51,5 +47,8 @@ INSERT INTO 'Tags' VALUES (null, 'CRUD');
 
 INSERT INTO 'EntryTags' VALUES (null, 1, 1);
 
+
+SELECT * FROM 'Moods';
+SELECT * FROM 'Entries';
 SELECT * FROM Tags;
 SELECT * FROM EntryTags;

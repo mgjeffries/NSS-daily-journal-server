@@ -7,6 +7,7 @@ CREATE TABLE 'Moods' (
 CREATE TABLE 'Entries' (
   'id' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   'date' TEXT NOT NULL,
+  'concept' TEXT NOT NULL,
   'entry' TEXT NOT NULL,
   'mood_id' INTEGER NOT NULL,
   FOREIGN KEY('mood_id') REFERENCES 'Moods'('id')
@@ -32,8 +33,8 @@ INSERT INTO 'Moods' VALUES (null, 'ominous');
 INSERT INTO 'Moods' VALUES (null, 'optimistic');
 INSERT INTO 'Moods' VALUES (null, 'adventurous');
 
-INSERT INTO 'Entries' VALUES (null, '07/06/2020', 'Start Day', 'John Talked to the class most of the day');
-INSERT INTO 'Entries' VALUES (null, '07/08/2020', 'HTML & CSS', 'Jumped in to creating pages with css and flexbox. Feeling overwhelmed');
+INSERT INTO 'Entries' VALUES (null, '07/06/2020', 'Start Day', 'John Talked to the class most of the day', 1);
+INSERT INTO 'Entries' VALUES (null, '07/08/2020', 'HTML & CSS', 'Jumped in to creating pages with css and flexbox. Feeling overwhelmed', 1);
 
 
 SELECT * FROM 'Moods';

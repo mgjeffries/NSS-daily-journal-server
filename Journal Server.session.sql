@@ -38,3 +38,17 @@ INSERT INTO 'Entries' VALUES (null, '07/08/2020', 'HTML & CSS', 'Jumped in to cr
 
 SELECT * FROM 'Moods';
 SELECT * FROM 'Entries';
+
+INSERT INTO 'Tags' VALUES (null, 'API');
+INSERT INTO 'Tags' VALUES (null, 'components');
+INSERT INTO 'Tags' VALUES (null, 'fetch');
+INSERT INTO 'Tags' VALUES (null, 'tagging');
+INSERT INTO 'Tags' VALUES (null, 'componenet state');
+INSERT INTO 'Tags' VALUES (null, 'character counter');
+INSERT INTO 'Tags' VALUES (null, 'decoupling');
+INSERT INTO 'Tags' VALUES (null, 'CRUD');
+
+INSERT INTO 'EntryTags' VALUES (null, 1, 1);
+
+SELECT * FROM Tags;
+SELECT * FROM EntryTags;

@@ -1,24 +1,24 @@
-from models import Mood
+from models import Tag
 import sqlite3
 import json
 
-def get_all_moods():
+def get_all_tags():
   with sqlite3.connect("./dailyjournal.db") as conn:
     conn.row_factory = sqlite3.Row
     db_cursor = conn.cursor()
 
     db_cursor.execute("""
     SELECT 
-      m.id,
-      m.name
-    FROM Moods m
+      t.id,
+      t.name
+    FROM Tags t
     """)
 
-    moods = []
+    tags = []
     dataset = db_cursor.fetchall()
 
     for row in dataset:
-      mood = Mood(row['id'], row['name'])
-      moods.append(mood.__dict__)
-  
-  return json.dumps(moods)
+      tag = Tag( row['id'], row['name'])
+      tags.append(tag.__dict__)
+    
+    return json.dumps(tags)

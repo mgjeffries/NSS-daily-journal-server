@@ -1,5 +1,6 @@
 from entries import get_all_entries, get_single_entry, delete_entry
 from moods import get_all_moods
+from tags import get_all_tags
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
@@ -40,7 +41,9 @@ class HandleRequests(BaseHTTPRequestHandler):
 			else:
 				response = f"{get_all_entries()}"
 		if resource == "moods":
-				response = f"{get_all_moods(id)}"
+				response = f"{get_all_moods()}"
+		if resource == "tags":
+				response = f"{get_all_tags()}"
 
 		self.wfile.write(response.encode())
 

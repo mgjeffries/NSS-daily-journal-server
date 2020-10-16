@@ -46,13 +46,18 @@ def get_single_entry(entryId):
 			e.date,
 			e.concept,
 			e.entry,
-			e.mood_id
+			e.mood_id,
+			m.name AS mood_name
 		FROM Entries e
+		JOIN Moods m
+			ON e.mood_id = m.id
 		WHERE e.id = ?
 		""", ( entryId, ))
 
 		data = db_cursor.fetchone()
 		entry = Entry(data['id'], data['date'], data['concept'], data['entry'], data['mood_id'])
+		mood = Mood(data['mood_id'], data['mood_name'])
+		entry.mood = mood.__dict__
 
 	return json.dumps(entry.__dict__)
 

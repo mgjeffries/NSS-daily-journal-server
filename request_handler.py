@@ -1,4 +1,4 @@
-from entries import get_all_entries, get_single_entry, delete_entry
+from entries import get_all_entries, get_single_entry, delete_entry, create_entry
 from moods import get_all_moods
 from tags import get_all_tags
 from entryTags import get_all_entry_tags
@@ -6,6 +6,13 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
 class HandleRequests(BaseHTTPRequestHandler):
+	def do_OPTIONS(self):
+		self.send_response(200)
+		self.send_header('Access-Control-Allow-Origin', '*')
+		self.send_header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+		self.send_header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept')
+		self.end_headers()
+
 	def parse_url(self, path):
 		path_params = path.split("/")
 		resource = path_params[1]
@@ -62,6 +69,9 @@ class HandleRequests(BaseHTTPRequestHandler):
 		(resource, id) = self.parse_url(self.path)
 
 		new_item = None
+
+		if resource == "entries":
+			new_item = create_entry(post_body)
 
 		self.wfile.write(f"{new_item}".encode())
 

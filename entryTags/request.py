@@ -23,3 +23,16 @@ def get_all_entry_tags():
       entryTags.append(entryTag.__dict__)
   
   return json.dumps(entryTags)
+
+def create_entry_tag(newEntryTag):
+  with sqlite3.connect("./dailyjournal.db") as conn:
+    db_cursor = conn.cursor()
+    db_cursor.execute("""
+    INSERT INTO EntryTags
+      ( entry_id, tag_id )
+    VALUES
+      ( ?, ? );
+    """ , (newEntryTag['entryId'], newEntryTag['tagId']))
+
+    id = db_cursor.lastrowid
+    newEntryTag['id'] = id

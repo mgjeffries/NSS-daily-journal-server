@@ -22,3 +22,18 @@ def get_all_tags():
       tags.append(tag.__dict__)
     
     return json.dumps(tags)
+
+
+def create_tag(newTag):
+  with sqlite3.connect("./dailyjournal.db") as conn:
+    db_cursor = conn.cursor()
+    db_cursor.execute("""
+    INSERT INTO Tags
+      ( subject )
+    VALUES
+      ( ? );
+    """ , (newTag['subject'], ) )
+
+    id = db_cursor.lastrowid
+    newTag['id'] = id
+  return json.dumps(newTag)

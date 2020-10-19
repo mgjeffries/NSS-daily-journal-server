@@ -1,6 +1,6 @@
 from entries import get_all_entries, get_single_entry, delete_entry, create_entry
 from moods import get_all_moods
-from tags import get_all_tags
+from tags import get_all_tags, create_tag
 from entryTags import get_all_entry_tags
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
@@ -72,6 +72,8 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 		if resource == "entries":
 			new_item = create_entry(post_body)
+		if resource == "tags":
+			new_item = create_tag(post_body)
 
 		self.wfile.write(f"{new_item}".encode())
 

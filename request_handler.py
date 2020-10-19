@@ -1,7 +1,7 @@
 from entries import get_all_entries, get_single_entry, delete_entry, create_entry
 from moods import get_all_moods
 from tags import get_all_tags, create_tag
-from entryTags import get_all_entry_tags, create_entry_tag
+from entryTags import get_all_entry_tags, create_entry_tag, delete_entryTag
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
@@ -107,8 +107,9 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 		if resource == "entries":
 		    delete_entry(id)
+		if resource == "entryTags":
+		    delete_entryTag(id)
 
-		# Encode the new animal and send in response
 		self.wfile.write("".encode())
 
 

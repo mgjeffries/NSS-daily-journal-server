@@ -1,7 +1,7 @@
 CREATE TABLE 'Moods' (
   'id' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   'name' TEXT NOT NULL
-)
+);
 
 
 CREATE TABLE 'Entries' (
@@ -11,11 +11,11 @@ CREATE TABLE 'Entries' (
   'entry' TEXT NOT NULL,
   'mood_id' INTEGER NOT NULL,
   FOREIGN KEY('mood_id') REFERENCES 'Moods'('id')
-)
+);
 
 CREATE TABLE 'Tags' (
   'id' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  'subject' TEXT NOT NULL
+  'subject' TEXT NOT NULL;
 )
 
 CREATE TABLE 'EntryTags' (
@@ -24,7 +24,7 @@ CREATE TABLE 'EntryTags' (
   'tag_id' INTEGER NOT NULL,
   FOREIGN KEY('entry_id') REFERENCES 'Entries'('id'),
   FOREIGN KEY('tag_id') REFERENCES 'Tags'('id')
-)
+);
 
 INSERT INTO 'Moods' VALUES (null, 'happy');
 INSERT INTO 'Moods' VALUES (null, 'meh');
@@ -52,3 +52,4 @@ SELECT * FROM 'Moods';
 SELECT * FROM 'Entries';
 SELECT * FROM Tags;
 SELECT * FROM EntryTags;
+

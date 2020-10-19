@@ -79,8 +79,15 @@ def create_entry(newEntry):
 def delete_entry(entryId):
 	with sqlite3.connect("./dailyjournal.db") as conn:
 		db_cursor = conn.cursor()
+		
 		db_cursor.execute("""
 		DELETE 
 		FROM Entries AS e
 		WHERE e.id = ?
+		""", ( entryId, ))
+
+		db_cursor.execute("""
+		DELETE 
+		FROM EntryTags AS et
+		WHERE et.entry_id = ?
 		""", ( entryId, ))

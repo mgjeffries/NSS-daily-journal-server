@@ -36,3 +36,13 @@ def create_entry_tag(newEntryTag):
 
     id = db_cursor.lastrowid
     newEntryTag['id'] = id
+
+def delete_entryTag(entryTagId):
+	with sqlite3.connect("./dailyjournal.db") as conn:
+		db_cursor = conn.cursor()
+		
+		db_cursor.execute("""
+		DELETE 
+		FROM EntryTags AS et
+		WHERE et.id = ?
+		""", ( entryTagId, ))

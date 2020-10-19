@@ -1,1 +1,1 @@
-from .request import get_all_entry_tags, create_entry_tag
+from .request import get_all_entry_tags, create_entry_tag, delete_entryTag

@@ -10,7 +10,7 @@ def get_all_tags():
     db_cursor.execute("""
     SELECT 
       t.id,
-      t.name
+      t.subject
     FROM Tags t
     """)
 
@@ -18,7 +18,7 @@ def get_all_tags():
     dataset = db_cursor.fetchall()
 
     for row in dataset:
-      tag = Tag( row['id'], row['name'])
+      tag = Tag( row['id'], row['subject'])
       tags.append(tag.__dict__)
     
     return json.dumps(tags)

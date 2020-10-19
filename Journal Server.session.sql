@@ -15,7 +15,7 @@ CREATE TABLE 'Entries' (
 
 CREATE TABLE 'Tags' (
   'id' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  'name' TEXT NOT NULL
+  'subject' TEXT NOT NULL
 )
 
 CREATE TABLE 'EntryTags' (

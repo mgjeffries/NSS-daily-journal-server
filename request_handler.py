@@ -1,4 +1,4 @@
-from entries import get_all_entries, get_single_entry, delete_entry, create_entry
+from entries import get_all_entries, get_single_entry, delete_entry, create_entry, update_journal_entry
 from moods import get_all_moods
 from tags import get_all_tags, create_tag
 from entryTags import get_all_entry_tags, create_entry_tag, delete_entryTag
@@ -81,20 +81,20 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 
 	def do_PUT(self):
-		self._set_headers(204)
 		content_len = int(self.headers.get('content-length', 0))
 		post_body = self.rfile.read(content_len)
 		post_body = json.loads(post_body)
 
 		# Parse the URL
 		(resource, id) = self.parse_url(self.path)
-
-		# if resource == "animals":
-		#     update_animal(id, post_body)
-		# if resource == "customers":
-		#     update_customer(id, post_body)
-		# if resource == "employees":
-		#     update_employee(id, post_body)
+		success = False
+		if resource == "entries":
+		  success = update_journal_entry(id, post_body)
+		
+		if success:
+			self._set_headers(204)
+		else:
+			self._set_headers(404)
 
 		self.wfile.write("".encode())
 	

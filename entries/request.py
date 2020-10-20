@@ -91,3 +91,26 @@ def delete_entry(entryId):
 		FROM EntryTags AS et
 		WHERE et.entry_id = ?
 		""", ( entryId, ))
+
+
+def update_journal_entry(id, updatedEntry):
+	with sqlite3.connect("./dailyjournal.db") as conn:
+		db_cursor = conn.cursor()
+		
+		db_cursor.execute("""
+		UPDATE Entries
+			SET 
+				date = ?,
+				concept = ?,
+				entry = ?,
+				mood_id = ?
+			WHERE id = ?
+		""", (updatedEntry['date'], updatedEntry['concept'], 
+		updatedEntry['entry'], updatedEntry['moodId'], id ) )	
+
+		rows_affected = db_cursor.rowcount
+
+		if rows_affected == 0:
+			return False 
+		else: 
+			return True
